@@ -2,9 +2,28 @@ apiVersion: v1
 kind: Pod
 metadata: 
   name: mywas
+  labels:
+    app: mywas
 spec:
   containers:
   - name: mywas
-    image: my_was:0.1
+    image: my_was:0.1.1
     ports:
-    - containerPort: 80
+    - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer
+  labels:
+    app: load-balancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: mywas
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8000
+    targetPort: 8000

@@ -4,4 +4,6 @@ services:
     build: 
       context: ../
       dockerfile: ./scripts/was.Dockerfile
-    image: my_was:0.1
+    image: my_was:0.1.1
+    ports:
+      - 8000:8000
