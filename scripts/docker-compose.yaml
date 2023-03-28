@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  was:
+    build: 
+      context: ../
+      dockerfile: ./scripts/was.Dockerfile
+    image: my_was:0.1
